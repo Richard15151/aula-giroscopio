@@ -6,30 +6,39 @@ import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-
 
 const { width, height } = Dimensions.get('window');
 const PLAYER_SIZE = 50;
-const ORB_BASE_SIZE = 30;
 
 type JogoProps = {
   tempoLimite: number;
   onGameOver: (score: number) => void;
+  dificuldade: "facil" | "medio" | "dificil";
 };
 
-function GameContent({ tempoLimite, onGameOver }: JogoProps) {
-  const insets = useSafeAreaInsets(); // pega margens seguras do iPhone
+function GameContent({ tempoLimite, onGameOver, dificuldade }: JogoProps) {
+  const insets = useSafeAreaInsets();
   const [data, setData] = useState({ x: 0, y: 0, z: 0 });
   const [playerPosition, setPlayerPosition] = useState({ x: width / 2, y: height / 2 });
   const [score, setScore] = useState(0);
   const [tempoRestante, setTempoRestante] = useState(tempoLimite);
   const [som, setSom] = useState<Audio.Sound | null>(null);
-  const [orbSize, setOrbSize] = useState(ORB_BASE_SIZE);
   const [orbOpacity] = useState(new Animated.Value(1));
 
+  // Definir tamanho inicial do orbe por dificuldade
+  const ORB_SIZE_MAP = {
+    facil: 30,
+    medio: 20,
+    dificil: 12,
+  };
+  const [orbSize, setOrbSize] = useState(ORB_SIZE_MAP[dificuldade]);
+
   // Gera posição respeitando safe area
-  const generateRandomPosition = () => ({
-    x: Math.random() * (width - ORB_BASE_SIZE),
-    y: insets.top + Math.random() * (height - insets.top - insets.bottom - ORB_BASE_SIZE),
+  const generateRandomPosition = (insets: { top: number; bottom: number; left: number; right: number }, orbSize: number) => ({
+    x: insets.left + Math.random() * (width - insets.left - insets.right - orbSize),
+    y: insets.top + Math.random() * (height - insets.top - insets.bottom - orbSize),
   });
 
-  const [orbPosition, setOrbPosition] = useState(generateRandomPosition());
+  const [orbPosition, setOrbPosition] = useState(() => 
+  generateRandomPosition(insets, ORB_SIZE_MAP[dificuldade])
+);
 
   // Carrega o som do orbe
   useEffect(() => {
@@ -57,7 +66,7 @@ function GameContent({ tempoLimite, onGameOver }: JogoProps) {
 
     if (newX < 0) newX = 0;
     if (newX > width - PLAYER_SIZE) newX = width - PLAYER_SIZE;
-    if (newY < insets.top) newY = insets.top; // respeita top
+    if (newY < insets.top) newY = insets.top;
     if (newY > height - insets.bottom - PLAYER_SIZE) newY = height - insets.bottom - PLAYER_SIZE;
 
     setPlayerPosition({ x: newX, y: newY });
@@ -76,10 +85,7 @@ function GameContent({ tempoLimite, onGameOver }: JogoProps) {
 
     if (distance < (PLAYER_SIZE / 2) + (orbSize / 2)) {
       setScore(prev => prev + 1);
-      setOrbPosition(generateRandomPosition());
-
-      // Diminuir o tamanho do orbe progressivamente, mínimo 10
-      setOrbSize(prev => Math.max(10, ORB_BASE_SIZE - Math.floor(score / 5)));
+      setOrbPosition(generateRandomPosition(insets, orbSize));
 
       // Efeito de piscar
       Animated.sequence([
