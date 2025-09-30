@@ -28,17 +28,28 @@ function GameContent({ tempoLimite, onGameOver, dificuldade }: JogoProps) {
     medio: 20,
     dificil: 12,
   };
-  const [orbSize, setOrbSize] = useState(ORB_SIZE_MAP[dificuldade]);
+
+  const [orbSize] = useState(ORB_SIZE_MAP[dificuldade]);
 
   // Gera posição respeitando safe area
-  const generateRandomPosition = (insets: { top: number; bottom: number; left: number; right: number }, orbSize: number) => ({
-    x: insets.left + Math.random() * (width - insets.left - insets.right - orbSize),
-    y: insets.top + Math.random() * (height - insets.top - insets.bottom - orbSize),
-  });
+  const generateRandomPosition = (
+    insets: { top: number; bottom: number; left: number; right: number },
+    orbSize: number
+  ) => {
+    const padding = 50; // margem extra para não colar nas bordas
 
-  const [orbPosition, setOrbPosition] = useState(() => 
-  generateRandomPosition(insets, ORB_SIZE_MAP[dificuldade])
-);
+    const safeWidth = width - insets.left - insets.right - orbSize - padding * 2;
+    const safeHeight = height - insets.top - insets.bottom - orbSize - padding * 2;
+
+    return {
+      x: insets.left + padding + Math.random() * safeWidth,
+      y: insets.top + padding + Math.random() * safeHeight,
+    };
+  };
+
+  const [orbPosition, setOrbPosition] = useState(() =>
+    generateRandomPosition(insets, ORB_SIZE_MAP[dificuldade])
+  );
 
   // Carrega o som do orbe
   useEffect(() => {
@@ -52,7 +63,7 @@ function GameContent({ tempoLimite, onGameOver, dificuldade }: JogoProps) {
 
   // Giroscópio
   useEffect(() => {
-    Gyroscope.setUpdateInterval(11);
+    Gyroscope.setUpdateInterval(25);
     const subscription = Gyroscope.addListener(gyroscopeData => {
       setData(gyroscopeData);
     });

@@ -1,50 +1,101 @@
-# Welcome to your Expo app 👋
+# 🎮 Jogo do Orbe - Giroscópio
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> Status do Projeto: Concluído ✔️
 
-## Get started
+---
 
-1. Install dependencies
+### Tabela de Conteúdos
+* [Descrição do Projeto](#descrição-do-projeto)
+* [Demonstração da Aplicação](#demonstração-da-aplicação)
+* [Funcionalidades](#funcionalidades)
+* [Tecnologias Utilizadas](#tecnologias-utilizadas)
+* [Como Rodar o Projeto Localmente](#como-rodar-o-projeto-localmente)
+* [Funcionalidade Adicional](#funcionalidade-adicional-dificuldade-dinâmica)
+* [Autor](#autor)
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+### Descrição do Projeto
+<p align="center">
+Este projeto é um jogo interativo desenvolvido em React Native com Expo, onde o jogador deve movimentar seu celular utilizando o giroscópio para coletar orbes azuis dentro do tempo limite. O tamanho do orbe e o tempo da partida variam de acordo com a dificuldade escolhida (Fácil, Médio ou Difícil).
+</p>
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+### Demonstração da Aplicação
+<p align="center">
+  <img src="link-para-seu-gif-ou-video.gif" alt="Demonstração do App" width="300"/>
+</p>
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Funcionalidades
 
-## Get a fresh project
+- **Movimento com Giroscópio:** O jogador move a bolinha laranja inclinando o celular.
+- **Coleta de Orbes:** O objetivo é coletar o máximo de orbes azuis possível antes do tempo acabar.
+- **Pontuação em Tempo Real:** O score é atualizado a cada orbe coletado.
+- **Dificuldades:**  
+  - Fácil → Orbe maior e mais tempo.  
+  - Médio → Orbe menor e tempo reduzido.  
+  - Difícil → Orbe ainda menor e pouco tempo.  
+- **Feedback Visual e Sonoro:** Orbe pisca e emite som quando coletado.
+- **Tela de Fim de Jogo:** Mostra a pontuação final e opção de reiniciar.
 
-When you're ready, run:
+---
+
+### Tecnologias Utilizadas
+
+- **[React Native](https://reactnative.dev/)**  
+- **[Expo](https://expo.dev/)**  
+- **[TypeScript](https://www.typescriptlang.org/)**  
+- **[Expo Sensors](https://docs.expo.dev/versions/latest/sdk/gyroscope/)** (para usar o giroscópio)  
+- **[Expo AV](https://docs.expo.dev/versions/latest/sdk/av/)** (para sons)  
+- **[Safe Area Context](https://docs.expo.dev/versions/latest/sdk/safe-area-context/)** (para respeitar áreas seguras do celular)  
+
+---
+
+### Como Rodar o Projeto Localmente
 
 ```bash
-npm run reset-project
+# 1. Clone o repositório
+$ git clone [link-do-seu-repositorio]
+
+# 2. Navegue até o diretório do projeto
+$ cd jogo-orbe
+
+# 3. Instale as dependências
+$ npm install
+
+# 4. Inicie o servidor de desenvolvimento
+$ npm start
 ```
+Após executar `npm start`, pressione `w` para abrir no navegador ou escaneie o QR Code com o app **Expo Go** no seu celular.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## Funcionalidade Adicional: Dificuldade Dinâmica
 
-To learn more about developing your project with Expo, look at the following resources:
+### Descrição
+A principal funcionalidade adicional é o ajuste dinâmico do **tamanho do orbe** e do **tempo limite da partida** conforme a dificuldade escolhida.  
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- No **Fácil**, o orbe é maior e há mais tempo para jogar.  
+- No **Médio**, o orbe é menor e o tempo é reduzido.  
+- No **Difícil**, o orbe é ainda menor e o tempo é bem limitado.  
 
-## Join the community
+### Desafios e Aprendizados
+- Trabalhar com **sensores do celular** (giroscópio) para capturar movimentos em tempo real.  
+- Usar o **SafeArea** para evitar que os orbes aparecessem fora da área segura da tela.  
+- Implementar lógica de colisão entre player e orbe.  
 
-Join our community of developers creating universal apps.
+### Demonstração da Nova Funcionalidade
+<p align="center">
+  <img src="link-para-seu-gif-ou-screenshot.png" alt="Demonstração da Dificuldade Dinâmica" width="300"/>
+</p>
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+### Autor
+
+Desenvolvido por **[Seu Nome Completo]**.  
+
+Sob a orientação do **Prof. Rafael Ribas**.
