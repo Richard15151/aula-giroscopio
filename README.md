@@ -24,7 +24,7 @@ Este projeto é um jogo interativo desenvolvido em React Native com Expo, onde o
 
 ### Demonstração da Aplicação
 <p align="center">
-  <img src="link-para-seu-gif-ou-video.gif" alt="Demonstração do App" width="300"/>
+  <img src="./assets/videos/videojogoorbe.gif" alt="Demonstração do App" width="300"/>
 </p>
 
 ---
@@ -87,15 +87,10 @@ A principal funcionalidade adicional é o ajuste dinâmico do **tamanho do orbe*
 - Usar o **SafeArea** para evitar que os orbes aparecessem fora da área segura da tela.  
 - Implementar lógica de colisão entre player e orbe.  
 
-### Demonstração da Nova Funcionalidade
-<p align="center">
-  <img src="link-para-seu-gif-ou-screenshot.png" alt="Demonstração da Dificuldade Dinâmica" width="300"/>
-</p>
-
 ---
 
 ### Autor
 
-Desenvolvido por **[Seu Nome Completo]**.  
+Desenvolvido por **Richard de Oliveira Ribeiro**.  
 
 Sob a orientação do **Prof. Rafael Ribas**.

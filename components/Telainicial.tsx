@@ -7,7 +7,7 @@ type TelaInicialProps = {
 export default function TelaInicial({ onStart }: TelaInicialProps) {
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>🎮 Jogo do Giroscópio</Text>
+      <Text style={styles.titulo}>🎮 Jogo Colete o Orbe</Text>
       <Text style={styles.descricao}>
         Mova seu celular para coletar o maior número de orbes azuis antes do tempo acabar.
         Escolha uma dificuldade para começar:
