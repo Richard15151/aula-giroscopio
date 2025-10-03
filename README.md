@@ -17,7 +17,7 @@
 
 ### Descrição do Projeto
 <p align="center">
-Este projeto é um jogo interativo desenvolvido em React Native com Expo, onde o jogador deve movimentar seu celular utilizando o giroscópio para coletar orbes azuis dentro do tempo limite. O tamanho do orbe e o tempo da partida variam de acordo com a dificuldade escolhida (Fácil, Médio ou Difícil).
+Este projeto é um jogo interativo desenvolvido em React Native com Expo, onde o jogador deve movimentar seu celular utilizando o giroscópio para coletar orbes azuis dentro do tempo limite. O tamanho do orbe, o tempo da partida e a dificuldade do movimento variam de acordo com a dificuldade escolhida (Fácil, Médio ou Difícil). Além disso, agora o jogo inclui obstáculos móveis que o jogador deve evitar.
 </p>
 
 ---
@@ -33,6 +33,7 @@ Este projeto é um jogo interativo desenvolvido em React Native com Expo, onde o
 
 - **Movimento com Giroscópio:** O jogador move a bolinha laranja inclinando o celular.
 - **Coleta de Orbes:** O objetivo é coletar o máximo de orbes azuis possível antes do tempo acabar.
+- **Obstáculo Móvel:** Quadrado vermelho se move horizontalmente no centro da tela; encostar nele finaliza o jogo.
 - **Pontuação em Tempo Real:** O score é atualizado a cada orbe coletado.
 - **Dificuldades:**  
   - Fácil → Orbe maior e mais tempo.  
@@ -76,16 +77,21 @@ Após executar `npm start`, pressione `w` para abrir no navegador ou escaneie o 
 ## Funcionalidade Adicional: Dificuldade Dinâmica
 
 ### Descrição
-A principal funcionalidade adicional é o ajuste dinâmico do **tamanho do orbe** e do **tempo limite da partida** conforme a dificuldade escolhida.  
+O jogo agora inclui ajustes dinâmicos e desafios extras:
 
-- No **Fácil**, o orbe é maior e há mais tempo para jogar.  
-- No **Médio**, o orbe é menor e o tempo é reduzido.  
-- No **Difícil**, o orbe é ainda menor e o tempo é bem limitado.  
+- **Tamanho do Orbe e Tempo:** Variam de acordo com a dificuldade escolhida.
+
+- **Sensibilidade do Player:** Ajustada para movimentos suaves e responsivos.
+
+- **Obstáculo Horizontal:** Obstáculo vermelho se move horizontalmente no centro da tela; encostar nele termina o jogo.
+
+- **Score Garantido:** Correção para garantir que a pontuação final seja exibida corretamente, mesmo quando o tempo termina.  
 
 ### Desafios e Aprendizados
 - Trabalhar com **sensores do celular** (giroscópio) para capturar movimentos em tempo real.  
 - Usar o **SafeArea** para evitar que os orbes aparecessem fora da área segura da tela.  
-- Implementar lógica de colisão entre player e orbe.  
+- Implementar lógica de colisão entre player e orbe.
+- Garantir pontuação final consistente, evitando bugs de atualização durante o render.
 
 ---
 
